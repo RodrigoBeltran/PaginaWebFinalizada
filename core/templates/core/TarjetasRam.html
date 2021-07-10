@@ -1,0 +1,152 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+
+{% block title %} Tarjetas Rams{% endblock %}
+
+{% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #264653;">
+  <a href="{% url 'inicio' %}" target="_parent">
+  <img src="{% static 'core/img/CANO_logo.png' %}" alt="logo" width="80px" height="80px">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav" id="nav">
+      <li class="nav-item  ">
+      <a class="nav-link " href="{% url 'inicio' %}">Inicio </a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'acerca' %}">Acerca de..</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'contacto' %}">Contacto</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'juego' %}">Juegos</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cotizador
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'EnfriamientoCPU' %}">Enfriamientos CPU</a>
+          <a class="dropdown-item" href="{% url 'fuentesDePoder' %}">Fuentes de Poder</a>
+          <a class="dropdown-item" href="{% url 'Gabinetes' %}">Gabinetes</a>
+          <a class="dropdown-item" href="{% url 'PlacaMadre' %}">Placas Madres</a>
+          <a class="dropdown-item" href="{% url 'Procesadores' %}">Procesadores</a>
+          <a class="dropdown-item"  href="{% url 'SistemasAlmacenamiento' %}">Unidades de almacenamiento</a>
+          <a class="dropdown-item " href="{% url 'TargetasGraficas' %}">Tarjetas Graficas</a>
+          <a class="dropdown-item active" style="background-color: #264653;" href="{% url 'TarjetasRam' %}">Memorias RAM</a>
+      </div>
+      </li>
+  </ul>
+  </div>
+  {% if user.is_authenticated  %}
+    <li>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </li>
+    <li>
+      <a href="#">@{{ user.username}}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </li>
+    <li>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </li>
+    
+    {% endif %}
+  </nav>
+{% endblock %}
+
+{% block content %}
+<header>
+  <div class="container">
+    <div class="row mt-4 mb-4">
+      <div class="col-sm-12">
+          <div class="card">
+            <img class="card-img-top" src="{% static 'core/img/RAMS/MEMORIAS RAM.png' %}" alt="Imagen">
+          </div>
+      </div>
+    </div>
+  </div>
+</header >
+
+
+
+{% load humanize %}
+    <div class="container">
+      <div class="row mt-4 mb-4">
+        {% for p in entity%}
+        <div class="card-deck" style="width: 18rem; padding: 10px;" >
+          <div class="card bg-dark text-white">
+            {% if p.imagen %}
+                <img src="{{ p.imagen.url}}" alt="imagen" style="height: 100%; height: 200px; object-fit: cover;">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{p.nombre}}</h5>
+              <p class="card-text"><b> DETALLE </b><br>
+               <b>Capacidad:</b> {{p.capacidad}}. <br>
+               <b> Tipo:</b> {{p.tipo}}. <br>
+               <b> Frecuencia:</b> {{p.formato}}. <br>
+               <b>Voltaje:</b> {{p.voltaje}}. <br>
+              </p>
+              <h3 style="color: red;">${{p.precio | intcomma }}</h3>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}  
+    </div>
+    <div>
+      {% include 'core/paginator.html' %}
+    </div>
+    
+
+  <section class="conver" id="conver" style="background-color: black; color: aliceblue;">
+    <div id="app">
+      <div class="container">
+        <h5>Convertidor de monedas</h5>
+        <div class="row">
+          <div class="col-sm-6">
+            <label for="actual"></label>
+            <select v-model="from" name="" id="" class="form-control">
+              <option :value="monedas.id" v-for="monedas in formatearMonedas">
+                {{monedas.currencyName}}
+              </option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            <label for="final"></label>
+            <select v-model="to" name="" id="" class="form-control">
+              <option :value="monedas.id" v-for="monedas in formatearMonedas">
+                {{monedas.currencyName}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 offset-md-2">
+            <input v-model="cantidad" type="text" class="form-control my-5" placeholder="ingresar cantidad">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button :disabled="deshabilidado" @click="convertirMoneda()" class="btn btn-primary" >Convertir</button>
+          </div>
+        </div>
+        <div class=" row mt-5">
+          <div class="col-sm-12 text-center">
+            <h5>{{calcularResultado}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  
+{% endblock %}
+   

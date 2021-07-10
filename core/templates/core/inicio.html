@@ -1,0 +1,221 @@
+{% extends 'core/base.html'%}
+
+
+
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #264653;">
+    <a href="{% url 'inicio' %}" target="_parent">
+      <img src="{% static 'core/img/CANO_logo.png' %}" alt="logo" width="80px" height="80px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav" id="nav">
+        <li class="nav-item  ">
+          <a class="nav-link active" href="{% url 'inicio' %}">Inicio </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'acerca' %}">Acerca de..</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'contacto' %}">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'juego' %}">Juegos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Cotizador
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'EnfriamientoCPU' %}">Enfriamientos CPU</a>
+            <a class="dropdown-item" href="{% url 'fuentesDePoder' %}">Fuentes de Poder</a>
+            <a class="dropdown-item" href="{% url 'Gabinetes' %}">Gabinetes</a>
+            <a class="dropdown-item" href="{% url 'PlacaMadre' %}">Placas Madres</a>
+            <a class="dropdown-item" href="{% url 'Procesadores' %}">Procesadores</a>
+            <a class="dropdown-item" href="{% url 'SistemasAlmacenamiento' %}">Unidades de almacenamiento</a>
+            <a class="dropdown-item" href="{% url 'TargetasGraficas' %}">Tarjetas Graficas</a>
+            <a class="dropdown-item" href="{% url 'TarjetasRam' %}">Memorias RAM</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    {% if user.is_authenticated  %}
+    <li>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </li>
+    <li>
+      <a href="#">@{{ user.username}}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </li>
+    <li>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </li>
+    
+    {% endif %}
+    
+  </nav>
+{% endblock %}
+
+
+{% block content %}
+
+  
+
+<div class="container">
+  <body>
+    <div class="header" style="padding: 50px;">
+        <h1 class="card-title text-black font-italic" >Bienvenido a CANO</h1>
+        <p class="card-title text-black font-italic"> <b>  Si eres nuevo en el mundo de Hardware y no sabes lo necesario para jugar tu titulo favorito, ven y visita nuestra pagina, aquí nosotros te ayudaremos a cotizar tu computador o piezas necesarias para que las compres al mejor precio y disfrutes tus Videojuegos de manera optima...</b>
+        </p>
+        <hr class="my-4">
+    </header>
+    <h3 class="display-4" style="padding: 70px;"><b> Los juegos mas Jugados del 2021</b></h3>
+    <div class="row mt-4 mb-4">
+        <div class="card-deck" style="width: 80rem;">
+          <div class="card bg-dark text-white">
+              <a href="#">
+                  <img class="card-img-top img-fluid" src="{% static 'core/img/GTA_V.jpg' %}" alt="Imagen">
+              </a>
+              <div class="card-body">
+                  <h4 class="card-title">GTA V</h4>
+                  <p class="card-text"> <b> Requisitos optimos</b>
+                     <b> Procesador:</b> Intel Core i5 3470 a 3,2 GHz (4 CPU)/AMD FX-8350 a 4 GHz (8 CPU).
+                     <b> Memoria:</b> 8 GB de RAM
+                     <b> Gráficos:</b> NVIDIA GTX 660 2 GB/AMD HD7870 2 GB.
+                     <b> Almacenamiento:</b> 72 GB de espacio disponible</p>
+              </div>
+              <div class="card-footer">
+                  <a href="https://www.rockstargames.com/V/es" target="_blank" class="card-link">Saber más del juego..</a>
+              </div>
+          </div>
+          <div class="card bg-dark text-white">
+              <a href="#">
+                  <img class="card-img-top" src="{% static 'core/img/LeagueOL.png' %}" alt="Imagen">
+              </a> 
+              <div class="card-body">
+                <h4 class="card-title">League OF Legends</h4>
+                <p class="card-text"> <b> Requisitos optimos </b> <br>
+                   <b> Procesador:</b>Intel Core i3-2120 a 3,3 GHz (2 CPU)/AMD FX-4100 a 3,6 GHz (4 CPU). <br>
+                   <b> Memoria:</b> 4 GB de RAM <br>
+                   <b> Gráficos:</b> Nvidia GeForce GT9600/AMD Radeon HD2600 (GPU dedicada con 512 MB de memoria gráfica (VRAM) o más) <br>
+                   <b> Almacenamiento:</b>  12 GB de espacio disponible</p>
+              </div> 
+              <div class="card-footer">
+                <a href="https://na.leagueoflegends.com/es-ar/" target="_blank" class="card-link">Saber más del juego..</a>
+              </div>  
+          </div>
+          <div class="card bg-dark text-white">
+                <a href="#">
+                    <img class="card-img-top" src="{% static 'core/img/CODWARZONE.png' %}" alt="Imagen">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">Call Of Duty: Warzone</h4>
+                  <p class="card-text"> <b> Requisitos optimos</b>
+                    <b>Procesador:</b> Intel Core i3-4340 a 3,6 Ghz(2 CPU)/AMD FX-6300 a 3,6 GHz (6 CPU).
+                    <b>Memoria:</b> 8 GB de RAM
+                    <b>Gráficos:</b> NVIDIA GTX 670/GeForce GTX 1650 4GB/AMD HD7950 3GB 
+                    <b>Almacenamiento:</b> 175 GB de espacio disponible</p>
+                </div>
+                <div class="card-footer">
+                  <a href="https://www.callofduty.com/es/warzone" target="_blank" class="card-link">Saber más del juego..</a>
+                </div>
+
+          </div>
+          <div class="card bg-dark text-white">
+            <a href="#">
+                <img class="card-img-top" src="{% static 'core/img/ForNAI.png' %}" alt="Imagen">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">Fortnite</h4>
+              <p class="card-text"> <b> Requisitos optimos</b>
+                <b> Procesador:</b> Intel Core i5-7300U a 3,5 GHz (4CPU)/AMD FX-6300 a 3,6 GHz (6 CPU).
+                <b> Memoria:</b> 8 GB de RAM
+                <b>Gráficos:</b> Nvidia GTX 660 2GB/AMD Radeon HD 7870 2GB. <br>
+                <b>Almacenamiento:</b> 20 GB de espacio disponible</p>
+            </div>
+            <div class="card-footer">
+              <a href="https://www.epicgames.com/fortnite/es-ES/home" target="_blank" class="card-link">ver detalles</a>
+            </div>
+
+      </div>
+          
+        </div>  
+    </div>
+  </div>
+  <div class="container">
+    <h3 class="display-4">Hardware mas cotizado</h3>
+    <div class="row mt-4 mb-4">
+        <div class="card-deck" style="width: 80rem;">
+          <div class="card bg-dark text-white">
+              <a href="#">
+                  <img class="card-img-top img-fluid" src="{% static 'core/img/PROCESADOR.jpg' %}" alt="Imagen">
+              </a>
+              <div class="card-body">
+                  <h4 class="card-title">Procesadores</h4>
+                  <p class="card-text">El procesador (CPU, "Central Processing Unit") es el componente más importante de nuestro PC. Su función es la de ser el cerebro de todo el funcionamiento del sistema, siendo el encargado de dirigir todas las tareas que lleva a cabo nuestro equipo.</p>
+              </div>
+              <div class="card-footer">
+                  <a href="Procesadores.html" target="_self" class="card-link">Ir al apartado de Procesadores</a>
+              </div>
+          </div>
+          <div class="card bg-dark text-white">
+              <a href="#">
+                  <img class="card-img-top" src="{% static 'core/img/GRAFICA.jpg' %}" alt="Imagen">
+              </a> 
+              <div class="card-body">
+                <h4 class="card-title">Tarjetas Gráficas</h4>
+                <p class="card-text"> La tarjeta gráfica o tarjeta de vídeo de un componente que viene integrado en la placa base del PC o se instala a parte para ampliar sus capacidades. Concretamente, esta tarjeta está dedicada al procesamiento de datos relacionados con el vídeo y las imágenes que se están reproduciendo en el ordenador tanto videojuegos como videos de alta calidad y resolución.</p>
+              </div> 
+              <div class="card-footer">
+                <a href="TargetasGraficas.html" target="_self" class="card-link">Ir al apartado de Tarjetas Gráfias</a>
+              </div>  
+          </div>
+          <div class="card bg-dark text-white">
+                <a href="#">
+                    <img class="card-img-top" src="{% static 'core/img/PLACA.jpg' %}" alt="Imagen">
+                </a>
+                <div class="card-body">
+                  <h4 class="card-title">Placas Madres</h4>
+                  <p class="card-text">La placa base, tarjetas madre o motherboard en inglés, es el elemento central de cualquier PC. Su función es la de dar soporte e interconectar de manera correcta y eficiente a todos los dispositivos internos de un ordenador, ya sea de escritorio o portátil.</p>
+                
+                </div>
+                <div class="card-footer">
+                  <a href="PlacaMadre.html" target="_self" class="card-link">Ir al apartado de Placas madres</a>
+                </div>
+
+          </div>
+
+          <div class="card bg-dark text-white">
+            <a href="#">
+                <img class="card-img-top" src="{% static 'core/img/RAM.jpg' %}" alt="Imagen">
+            </a>
+            <div class="card-body">
+              <h4 class="card-title">Memorias RAM</h4>
+              <p class="card-text">Es la memoria principal de un dispositivo, esa donde se almacenan de forma temporal los datos de los programas que estás utilizando en este momento. Sirve para que el ordenador gestione los datos de las aplicaciones en funcionamiento, la cantidad que tengas afecta directamente al rendimiento de tu dispositivo. 
+                  Cuanta más RAM tengas más aplicaciones podrás gestionar a la vez, y de ahí su importancia porque si no hay suficiente el ordenador puede ir lento.</p>
+            </div>
+            <div class="card-footer">
+              <a href="TarjetasRam.html" class="card-link">Ir al apartado de Memorias RAM</a>
+            </div>
+
+      </div>
+          
+        </div>  
+    </div>
+  </body>
+  </div>
+  
+{% endblock %}
+
+
+
+

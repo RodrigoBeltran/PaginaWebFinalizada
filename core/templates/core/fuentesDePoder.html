@@ -1,0 +1,278 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+
+{% block title %}Fuentes de Poder{% endblock %}
+
+{% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #264653;">
+  <a href="{% url 'inicio' %}" target="_parent">
+  <img src="{% static 'core/img/CANO_logo.png' %}" alt="logo" width="80px" height="80px">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+  <ul class="navbar-nav" id="nav">
+      <li class="nav-item  ">
+      <a class="nav-link " href="{% url 'inicio' %}">Inicio </a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'acerca' %}">Acerca de..</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'contacto' %}">Contacto</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="{% url 'juego' %}">Juegos</a>
+      </li>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Cotizador
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item " href="{% url 'EnfriamientoCPU' %}">Enfriamientos CPU</a>
+          <a class="dropdown-item active" style="background-color: #264653;" href="{% url 'fuentesDePoder' %}">Fuentes de Poder</a>
+          <a class="dropdown-item" href="{% url 'Gabinetes' %}">Gabinetes</a>
+          <a class="dropdown-item" href="{% url 'PlacaMadre' %}">Placas Madres</a>
+          <a class="dropdown-item" href="{% url 'Procesadores' %}">Procesadores</a>
+          <a class="dropdown-item" href="{% url 'SistemasAlmacenamiento' %}">Unidades de almacenamiento</a>
+          <a class="dropdown-item" href="{% url 'TargetasGraficas' %}">Tarjetas Graficas</a>
+          <a class="dropdown-item" href="{% url 'TarjetasRam' %}">Memorias RAM</a>
+      </div>
+      </li>
+  </ul>
+  </div>
+  {% if user.is_authenticated  %}
+    <li>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </li>
+    <li>
+      <a href="#">@{{ user.username}}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </li>
+    <li>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </li>
+    
+    {% endif %}
+  </nav>
+
+{% endblock %}
+
+
+{% block content %}
+<header>
+    <div class="container">
+      <div class="row mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="card">
+              <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/FUENTES.png' %}" alt="Imagen">
+            </div>
+        </div>
+      </div>
+    </div>
+  </header >
+
+  <section>
+    <div class="container">
+      <div class="row mt-4 mb-4">
+        <div class="card-deck">
+          <div class="card bg-dark text-white">
+            <div class="card-header">
+              <h4 class="card-title"><b>Gamemax VP-450 (450 W)</b></h4>
+            </div>
+            <div class="card-body">
+                <img class="card-img-top " src="{% static 'core/img/FUENTES DE PODER/Gamemax VP-450 (450 W).jpg' %}" alt="Imagen">
+            </div>
+            <div class="card-footer">
+                <p><b> DETALLES</b> <br>
+                   <b> Potencia:</b> 450 W <br>
+                   <b> Certificación:</b> Sin certificación <br>
+                   <b> Corriente 12V:</b> 28 A. <br>
+                   <b> Modular</b>: No <br>
+                   <b> PFC activo:</b> Sí <br>
+                   <b> Marca:</b> GAMEMAX <br>
+                  <span style="color: red;"> <b> PRECIO: $31.900</b></span></p>
+            </div>
+          </div>
+          <div class="card bg-dark text-white">
+            <div class="card-header">
+              <h4 class="card-title">EVGA 500 W1 (500 W)</h4>
+            </div>
+            <div class="card-body">
+              <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/EVGA 500 W1 (500 W).jpg' %}" alt="Imagen">
+            </div>
+            <div class="card-footer">
+              <p><b> DETALLES</b> <br>
+                 <b> Potencia:</b> 500 W <br>
+                 <b> Certificación:</b> 80PLUS <br>
+                 <b> Corriente 12V:</b> 40 A. <br>
+                 <b> Modular:</b> No <br>
+                 <b> PFC activo:</b> Sí <br>
+                 <b> Marca:</b> EVGA <br>
+                 <span style="color: red;"><b> PRECIO: $39.990</b></span></p>
+            </div>
+          </div>
+          <div class="card bg-dark text-white">
+              <div class="card-header">
+                <h4 class="card-title">Cooler Master Elite V3 600 (600 W)</h4>
+              </div>
+              <div class="card-body">
+                <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/Cooler Master Elite V3 600 (600 W).jpg' %}" alt="Imagen">
+              </div>
+              <div class="card-footer">
+                <p><b> DETALLES</b> <br>
+                   <b> Potencia:</b> 600 W <br>
+                   <b> Certificación:</b> Sin certificación <br>
+                  <b> Corriente 12V:</b> 46 A. <br>
+                   <b> Modular:</b> No <br> 
+                   <b> PFC activo:</b> Sí <br>
+                   <b> Marca:</b> COOLER MASTER <br>
+                   <span style="color: red;"><b> PRECIO:</b> $47.900</span></p>
+              </div>
+          </div> 
+          <div class="card bg-dark text-white">
+            <div class="card-header">
+              <h4 class="card-title">Azza PSAZ-650W ARGB (650 W)</h4>
+            </div>
+            <div class="card-body">
+              <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/Azza PSAZ-650W ARGB (650 W).jpg' %}" alt="Imagen">
+            </div>
+            <div class="card-footer">
+              <p><b> DETALLES</b> <br>
+                 <b> Potencia:</b> 650 W <br> 
+                 <b> Certificación:</b> 80PLUS Bronze <br>
+                 <b> Corriente 12V:</b> 48 A. <br>
+                 <b> Modular:</b> No <br>
+                 <b> PFC activo:</b> Sí <br>
+                 <b> Marca:</b> AZZA <br>
+                 <span style="color: red;"><b> PRECIO: $49.990</b></span></p>
+            </div>
+          </div> 
+      </div>
+    </div>
+    <section class="conver" id="conver" style="background-color: black; color: aliceblue; padding: 10;">
+      <div id="app">
+        <div class="container">
+          <h5>Convertidor de monedas</h5>
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="actual"></label>
+              <select v-model="from" name="" id="" class="form-control">
+                <option :value="monedas.id" v-for="monedas in formatearMonedas">
+                  {{monedas.currencyName}}
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label for="final"></label>
+              <select v-model="to" name="" id="" class="form-control">
+                <option :value="monedas.id" v-for="monedas in formatearMonedas">
+                  {{monedas.currencyName}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 offset-md-2">
+              <input v-model="cantidad" type="text" class="form-control my-5" placeholder="ingresar cantidad">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button :disabled="deshabilidado" @click="convertirMoneda()" class="btn btn-primary" >Convertir</button>
+            </div>
+          </div>
+          <div class=" row mt-5">
+            <div class="col-sm-12 text-center">
+              <h5>{{calcularResultado}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+      <br> <hr/> <br>
+    <div class="row mt-4 mb-4">
+      <div class="card-deck">
+        <div class="card bg-dark text-white">
+          <div class="card-header">
+            <h4 class="card-title"><b>EVGA 700 (700 W)</b></h4>
+          </div>
+          <div class="card-body">
+              <img class="card-img-top " src="{% static 'core/img/FUENTES DE PODER/EVGA 700 (700 W).jpg' %}" alt="Imagen">
+          </div>
+          <div class="card-footer">
+              <p><b> DETALLES</b> <br> 
+                 <b> Potencia:</b> 700 W <br>
+                 <b> Certificación:</b> 80PLUS <br>
+                 <b> Corriente 12V:</b> 49 A. <br>
+                 <b> Modular:</b> No <br>
+                 <b> PFC activo:</b> Sí <br>
+                 <b> Marca:</b> EVGA <br>
+                 <span style="color: red;"><b>PRECIO: $62.968</b></span></p>
+          </div>
+        </div>
+        <div class="card bg-dark text-white">
+          <div class="card-header">
+            <h4 class="card-title">EVGA SuperNOVA 750 G5 (750W)</h4>
+          </div>
+          <div class="card-body">
+            <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/EVGA SuperNOVA 750 G5 (750W).jpg' %}" alt="Imagen">
+          </div>
+          <div class="card-footer">
+            <p><b> DETALLES</b> <br>
+               <b> Potencia:</b> 750 W <br>
+               <b> Certificación:</b> 80PLUS Gold <br>
+               <b> Corriente 12V:</b> 62.5 A. <br>
+               <b> Modular:</b> Sí <br>
+               <b> PFC activo:</b> Sí <br>
+               <b> Marca:</b> EVGA <br>
+               <span style="color: red;"><b> PRECIO: $159.831</b></span></p>
+          </div>
+        </div>
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+              <h4 class="card-title">Gamemax GM-800 (800 W)</h4>
+            </div>
+            <div class="card-body">
+              <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/Gamemax GM-800 (800 W).jpg' %}" alt="Imagen">
+            </div>
+            <div class="card-footer">
+              <p><b> DETALLES</b> <br>
+                 <b> Potencia:</b> 800 W <br> 
+                 <b> Certificación:</b> 80PLUS <br> 
+                 <b> Corriente 12V:</b> 30 A. <br>
+                 <b> Modular:</b> Sí <br>
+                 <b> PFC activo:</b> Sí <br>
+                 <b> Marca:</b> GAMEMAX <br>
+                 <span style="color: red;"><b> PRECIO: $75.753</b></span></p>
+            </div>
+        </div> 
+        <div class="card bg-dark text-white">
+          <div class="card-header">
+            <h4 class="card-title">ASUS ROG-THOR-1200P (1200 W)</h4>
+          </div>
+          <div class="card-body">
+            <img class="card-img-top" src="{% static 'core/img/FUENTES DE PODER/ASUS ROG-THOR-1200P (1200 W).jpg' %}" alt="Imagen">
+          </div>
+          <div class="card-footer">
+            <p><b> DETALLES</b> <br>
+               <b> Potencia:</b> 1200 W <br> 
+               <b> Certificación:</b> 80PLUS Platinumb <br>
+               <b> Corriente 12V:</b> 100 A. <br> 
+               <b> Modular:</b> Sí <br>
+               <b> PFC activo:</b> Sí <br>
+               <b> Marca:</b> ASUS <br>
+               <span style="color: red;"><b> PRECIO: $389.990</b></span></p>
+          </div>
+        </div> 
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

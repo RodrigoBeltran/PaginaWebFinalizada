@@ -1,0 +1,142 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+
+{% block title %} Modificar Gabinete{% endblock %}
+
+{% block nav %}
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #264653;">
+        <a href="{% url 'inicio' %}" target="_parent">
+        <img src="{% static 'core/img/CANO_logo.png' %}" alt="logo" width="80px" height="80px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" id="nav">
+            <li class="nav-item  ">
+            <a class="nav-link " href="{% url 'inicio' %}">Inicio </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link " href="{% url 'agregarJuego' %}"> Agregar  Juegos</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Agregar Productos
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item active"style="background-color: #264653;" href="{% url 'agregarGabinete' %}"> Agregar Gabinetes</a>
+                <a class="dropdown-item" href="{% url 'agregarProce' %}"> Agregar Procesadores</a>
+                <a class="dropdown-item " href="{% url 'agregarGPU' %}"> Agregar Tarjetas Graficas</a>
+                <a class="dropdown-item "  href="{% url 'agregarRams' %}">Agregar Memorias RAM</a>
+            </div>
+            </li>
+        </ul>
+        </div>
+        {% if user.is_authenticated  %}
+    <li>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </li>
+    <li>
+      <a href="#">@{{ user.username}}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </li>
+    <li>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </li>
+    
+    {% endif %}
+        </nav>
+    {% endblock %}
+
+{% block content %}
+
+<br>
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3">
+            <main class="container mt-4 mb-4" >    
+                <div class="card"> 
+                    <div class="card-header" style="background-color: black; color: antiquewhite;">                                    
+                        <h2 > Editar Gabinete</h2>                                     
+                    </div>
+                    <div class="card-body " style="background-color: gainsboro;">
+                        <form class="formulario" id="formulario action=" method="post" enctype="multipart/form-data">                                
+                                {% csrf_token %}
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Nombre</label>
+                                    <div class="input-group">
+                                        {{form.nombre}}
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Precio</label>
+                                    <div class="input-group">
+                                            {{form.precio}}
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">formato</label>
+                                    <div class="input-group">
+                                            {{form.formato}}
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">fuentes de Poder</label>
+                                    <div class="input-group">
+                                        {{form.fuentePoder}}
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="fw-bold">Ubicacion</label>
+                                    <div class="input-group">
+                                        {{form.ubicacion}}
+                                    </div>
+                                </div>
+                                    <div class="form-group mb-3">
+                                        <label class="fw-bold">panel</label>
+                                        <div class="input-group">
+                                            {{form.panel}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="fw-bold">Ventiladores</label>
+                                        <div class="input-group">
+                                            {{form.ventiladores}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="fw-bold">Distribuidor</label>
+                                        <div class="input-group">
+                                            {{form.distribuidor}}
+                                        </div>
+                                    </div>                                    
+                                    <div class="form-group mb-3">
+                                        <label class="fw-bold">Imagen</label>
+                                        <div class="input-group">
+                                            {{form.imagen}}
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="d-flex justify-content-center text-end">
+                                                    
+                                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                                        &nbsp;
+                                        <input type="submit" value="editar" class="btn btn-primary">
+                                    </div>
+                        </form>
+                        <hr>
+                        
+                </div>
+            </div>
+                            
+        </main>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

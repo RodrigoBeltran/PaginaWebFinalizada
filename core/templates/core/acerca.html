@@ -1,0 +1,114 @@
+{% extends 'core/base.html'%}
+
+{% load static %}
+
+{% block title %}Acerca de{% endblock %}
+
+{% block nav %}
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #264653;">
+        <a href="{% url 'inicio' %}" target="_parent">
+        <img src="{% static 'core/img/CANO_logo.png' %}" alt="logo" width="80px" height="80px">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" id="nav">
+            <li class="nav-item  ">
+            <a class="nav-link " href="{% url 'inicio' %}">Inicio </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" href="{% url 'acerca' %}">Acerca de..</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link " href="{% url 'contacto' %}">Contacto</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link " href="{% url 'juego' %}">Juegos</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cotizador
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'EnfriamientoCPU' %}">Enfriamientos CPU</a>
+                <a class="dropdown-item" href="{% url 'fuentesDePoder' %}">Fuentes de Poder</a>
+                <a class="dropdown-item" href="{% url 'Gabinetes' %}">Gabinetes</a>
+                <a class="dropdown-item" href="{% url 'PlacaMadre' %}">Placas Madres</a>
+                <a class="dropdown-item" href="{% url 'Procesadores' %}">Procesadores</a>
+                <a class="dropdown-item" href="{% url 'SistemasAlmacenamiento' %}">Unidades de almacenamiento</a>
+                <a class="dropdown-item" href="{% url 'TargetasGraficas' %}">Tarjetas Graficas</a>
+                <a class="dropdown-item" href="{% url 'TarjetasRam' %}">Memorias RAM</a>
+            </div>
+            </li>
+        </ul>
+        </div>
+        {% if user.is_authenticated  %}
+    <li>
+        <a href="{% url 'logout' %}">Cerrar sesión</a>
+    </li>
+    <li>
+      <a href="#">@{{ user.username}}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}">Iniciar sesión</a>
+    </li>
+    <li>
+      <a href="{% url 'registro' %}">Registrate</a>
+    </li>
+    
+    {% endif %}
+        </nav>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-4 mb-4">
+        <div class="col-sm-12">
+            <div class="card">
+                <img class="card-img-top" src="{% static 'core/img/ACERCA DE FONDO.jpg' %}" alt="Imagen">
+                <div class="card-img-overlay">
+                <h4 class="card-title text-white font-italic">Quienes Somos...</h4>
+                <h5 class="card-subtitle text-white "> C.A.N.O </h5>
+                <p class="card-text text-white text-wrap d-none d-md-block font-italic">Somos un grupo de amigos buscando ayudar a la comunidad gamer centralizandonos en el area 
+                    de hardware, para poder ayudarlos a combatir los dificiles tiempos que estamos viviendo ante los elevados precios del hardware, creando un cotizador con
+                    los mejores precios a nivel nacional tanta en paginas web del país como internacionales con los mejores precios.
+                    Entregando el conocimiento de todo lo necesario y que requieran para poder jugar y disfrutar a la vez los mejores titulos del gaming. </p>       
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mt-4 mb-4">
+          <div class="col-md-6 mb-4 mt-2">
+              <div class="card bg-dark text-white">
+                  <div class="card-header">
+                      <img class="card-img-top" src="{% static 'core/img/RORO.jpg' %}" alt="Imagen">
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">Rodrigo Beltrán</h4>
+                      <h6 class="card-subtitle text-muted text-white "> CEO CANO </h6>
+                      <p class="card-text"> <hr> <b> Edad:</b> 20 años <hr> <b> Carrera:</b> Analista Programador Computacional</p>
+                  </div>
+              </div>
+          </div>
+            <div class="col-md-6 mb-4 mt-2">
+              <div class="card bg-dark text-white">
+                  <div class="card-header">
+                      <img class="card-img-top" src="{% static 'core/img/MAURI.png' %}" alt="Imagen">
+                  </div>
+                  <div class="card-body">
+                      <h4 class="card-title">Mauricio Valles</h4>
+                      <h6 class="card-subtitle text-muted  text-white">Director de tecnología CANO </h6>
+                      <p class="card-text"><hr> <b> Edad:</b> 19 años <hr> <b> Carrera:</b> Analista Programador Computacional</p>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+{% endblock %}
+

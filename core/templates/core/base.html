@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="{% static 'core/img/CANO_logo.png' %}" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+
+    <title>{% block title %}{% endblock %} | Cano Web</title>
+</head>
+<body >   
+  <body>
+    <!--Navbar-->
+    {% block nav %}
+    {% endblock %}
+    <body>
+        
+        <div class="div-container">
+
+
+            {% block content %}{% endblock %}
+        </div>   
+    </body>
+    <!--Footer Section -->
+    <footer class="footer mt-4 py-3" style="color: white;">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-12 col-md-3 text-center mt-4">
+                  <img src="{% static 'core/img/CANO_TEXTO.png' %}" alt="LOGO" width="200px" height="200px">
+              </div>
+              <div class="col-sm-12 col-md-3 mt-4">
+                  <h6 class="display-6">Mapa del sitio</h6>                    
+                  <nav class="nav flex-column">                        
+                      <a class="nav-link  " href="{% url 'inicio' %}">Inicio</a>
+                      <a class="nav-link active" href="{% url 'acerca' %}">Acerca de..</a>
+                      <a class="nav-link active" href="{% url 'contacto' %}">Contacto</a>
+                      <a class="nav-link active" href="{% url 'juego' %}">Juegos</a>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Cotizador
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown-dark"style="background-color: #264653;">
+                          <a class="dropdown-item" href="{% url 'EnfriamientoCPU' %}">Enfriamientos CPU</a>
+                          <a class="dropdown-item" href="{% url 'fuentesDePoder' %}">Fuentes de Poder</a>
+                          <a class="dropdown-item" href="{% url 'Gabinetes' %}">Gabinetes</a>
+                          <a class="dropdown-item" href="{% url 'PlacaMadre' %}">Placas Madres</a>
+                          <a class="dropdown-item" href="{% url 'Procesadores' %}">Procesadores</a>
+                          <a class="dropdown-item" href="{% url 'SistemasAlmacenamiento' %}">Unidades de almacenamiento</a>
+                          <a class="dropdown-item" href="{% url 'TargetasGraficas' %}">Tarjetas Graficas</a>
+                          <a class="dropdown-item" href="{% url 'TarjetasRam' %}">Memorias RAM</a>
+                        </div>
+                      </li>     
+                  </nav>  
+              </div> 
+              
+              
+              <div class="col-sm-12 col-md-6 mt-4">
+                <div class="card text-black border-secondary" style="background-color: #264653;">
+                    <div class="card-header">
+                        <h4 class="card-title">¡Siguenos en nuestras redes sociales!</h4>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a class="card-link" href="">
+                            <span style="font-size: 2em;">
+                                <i class="fab fa-facebook-f"></i>
+                            </span>
+                        </a>
+                        <a class="card-link" href="">
+                            <span style="font-size: 2em;">
+                                <i class="fab fa-instagram"></i>
+                            </span>
+                        </a>
+                        <a class="card-link" href="">
+                            <span style="font-size: 2em;">
+                                <i class="fab fa-twitter"></i>
+                            </span>
+                        </a>
+                        <a class="card-link" href="http://www.twitch.com">
+                            <span style="font-size: 2em;">
+                                <i class="fab fa-twitch"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <div class="wrap" style="color: white;">
+                      <div class="widget">
+                          <div class="fecha">
+                            <p id="diaSemana" class="diaSemana"></p>
+                            <p id="dia" class="dia"></p>
+                            <p>de</p>
+                            <p id="mes" class="mes"></p>
+                            <p>del</p>
+                            <p id="year" class="year"></p>
+                          </div>
+              
+                          <div class="reloj">
+                              <p id="horas" class="horas"></p>
+                              <p>:</p>
+                              <p id="minutos" class="minutos"></p>
+                              <p>:</p>
+                              <p id="segundos" class="segundos"></p>
+                               <p id="ampm" class="ampm"></p>
+                              
+                          </div>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+            </div>               
+          </div>
+      </div>
+  </footer>
+    <!-- FIN Footer Section -->
+
+    <!-- Preacargar JS Boostrap al final del documento -->
+    <!-- El orden de carga es jQuery, Popper.js, Boostrap.js -->
+    
+    <script src="{% static 'core/js/jquery-3.5.1.slim.min.js' %}"></script>
+    <script src="{% static 'core/js/popper.min.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'core/js/reloj.js' %}"></script>
+    <script src="{% static 'core/js/form.js' %}"></script>
+    <script src="{% static 'core/js/convertidor.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages %}
+        <script>
+            Swal.fire({
+                "title":"Felicitaciones",
+                "text": "{{m}}",
+                "icon":"success"
+            })
+        </script>
+        {% endfor %}
+    {% endif%}
+
+</body>
+</html>
